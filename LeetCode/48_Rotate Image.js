@@ -23,5 +23,3 @@ let matrix =
 
 console.log(rotate(matrix));
 
-let [i, j] = [3, 4];
-console.log(i)
