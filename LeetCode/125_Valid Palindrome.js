@@ -5,18 +5,17 @@ Input: "A man, a plan, a canal: Panama"
 Output: true     */
 
 const isPalindrome = s => {
-  let string = s.replace(/[^\w\!]/g, '').toLowerCase();
+  let string = s.replace(/[^a-z0-9]/gi, '').toLowerCase();
 
-  let halfway = Math.floor(string / 2);
+  let halfway = Math.floor(string.length / 2);
 
   for (let i = 0; i <= halfway; i += 1) {
-    console.log(string[i]);
-    console.log(string[string.length - 1 - i]);
     if (string[i] !== string[string.length - 1 - i]) return false;
   }
 
   return true;
 }
 
-let s = "A man, a plan, a canal: Panamaf";
-console.log(isPalindrome(s));
+let s = "A man, a plan, a canal: Panama";
+let s2 = 'ab_a'
+console.log(isPalindrome(s2));
