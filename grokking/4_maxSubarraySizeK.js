@@ -39,6 +39,7 @@ const max_sub_array_of_size_k = (k, arr) => {
   return maxSum;
 }
 
+
 let input1 = [2, 1, 5, 1, 3, 2], k1 = 3;
 let input2 = [2, 3, 4, 1, 5], k2 = 2;
 
