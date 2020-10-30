@@ -23,3 +23,5 @@ const isEqual = (root1, root2) => {
 
   return isEqual(root1.left, root2.left) && isEqual(root2.left, root2.right)
 }
+
+console.table({a: 1, b: 2, c: 3});

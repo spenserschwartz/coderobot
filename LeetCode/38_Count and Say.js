@@ -1,21 +1,30 @@
 // https://leetcode.com/problems/count-and-say/
 
 const countAndSay = n => {
-  let memo = {};
-  let arr = [];
+  if (n.length < 2) return n;
 
-  for (let i = 0; i < n.length; i += 1) {
-    if (memo[n[i]]) memo[n[i]] += 1;
-    else if (Object.keys(memo).length === 1 && n[i] !== n[i - 1]) {
-      arr.push(memo);
-      
-    } else {
-      memo[n[i]] = 1;
+  let count = 1;    // current letter count
+  let cL = n[0];           // current letter
+  let string = '';  // result string
+
+  for (let i = 1; i < n.length; i += 1) {
+    const letter = n[i];
+
+    if (letter === cL) count += 1;
+    else {
+      string += parseInt(count);
+      string += cL;
+      count = 1;
+      cL = n[i];
     }
   }
-  console.log(memo);
-  return arr;
+
+  // last count
+  string += parseInt(count);
+  string += cL;
+
+  return string;
 }
 
-let n = '3344451';
+let n = '3322251';
 console.log(countAndSay(n));
