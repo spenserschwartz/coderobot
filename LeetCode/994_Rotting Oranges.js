@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/rotting-oranges/
+// Good explanation: https://leetcode.com/problems/rotting-oranges/discuss/443931/Javascript-BFS-with-explaination 
 
 const orangesRotting = grid => {
   let minutes = 0;
