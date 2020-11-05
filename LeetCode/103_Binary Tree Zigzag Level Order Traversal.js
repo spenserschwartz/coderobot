@@ -18,17 +18,24 @@ class TreeNode {
 
 const zigzagLevelOrder = (root, depth = 1) => {
   const obj = {};
+  const result = [];
 
-
-  const helper = (root, depth = 1) {
+  const helper = (root, depth) => {
+    if (!root) return;
     obj[depth] ? obj[depth].push(root.val) : obj[depth] = [root.val];
 
     if (root.left) helper(root.left, depth + 1);
     if (root.right) helper(root.right, depth + 1);
   }
 
-  return obj;
+  helper(root, depth)
+  console.table(obj);
 
+  for (let i = 1; i <= Object.keys(obj).length; i += 1) {
+    i % 2 === 1 ? result.push(obj[i]) : result.push(obj[i].reverse());
+  }
+
+  return result;
 }
 
 
