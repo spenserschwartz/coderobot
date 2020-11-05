@@ -10,11 +10,16 @@ Output: ""
 Explanation: There is no common prefix among the input strings.   */
 
 const longestCommonPrefix = strings => {
-  // Sort the array and compare the first and the last 
-  strings.sort();
+  if (!strings || strings.length === 0) return '';
 
-  let i = 0;
-  while (i < strings[0].length && i < strings[strings.length - 1].length) {
-    
-  }
+  let prefix = strings.reduce((prev, next) => {
+    let i = 0;
+    while (prev[i] && next[i] && prev[i] === next[i]) i++;
+    return prev.slice(0,i);
+  })
+
+  return prefix;
 }
+
+let strs = ["flower","flow","flight"];
+console.log(longestCommonPrefix(strs));
