@@ -12,21 +12,22 @@
 //   return false;
 // }
 
-// !Cleaner
+// ! Cleaner, no comments
+
 // const hasPathSum = (root, sum) => {
 //   if (!root) return false;
 
-//   if (!root.left && !root.right) return sum === root.val;
-//   else {
-//     // Subtract root val to leave remaining sum 
-//     return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
-//   }
+//   if (!root.left && !root.right) return root.val === sum;
+//   else return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 // }
 
-
 const hasPathSum = (root, sum) => {
-  if (!root) return false;
+  // Once there is no more branches, you can return that sum. If that = sum, return true
+  //   If none of the end of the branches = sum, return false
 
-  if (!root.left && !root.right) return root.val === sum;
-  else return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+  if (!root) return false;
+  // As you move down each branch, subtract the current root value from the sum 
+  // If you've reached a leaf and it equals sum, then true
+  if (!root.left && !root.right && root.val === sum) return true;
+  return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
 }
