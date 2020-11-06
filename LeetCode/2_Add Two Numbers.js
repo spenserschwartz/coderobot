@@ -9,31 +9,32 @@
 
  // ! Digits stored in reverse order
 const addTwoNumbers = (list1, list2) => {
-  let List = new ListNode(0);
-  let head = List;  // pointer in result list
-  let sum = 0;      // sum gets emptied into List every iteration of while loop
-  let carry = 0;    // carrying a 1 if sum >= 10
+  let list = new ListNode(0);
+  let head = list;
+  let sum = 0;
+  let carry = 0;
 
-  while (l1 || l2 || sum > 0) {
-    if (l1) {
-      sum += l1.val;
-      l1 = l1.next;
-    };
-
-    if (l2) {
-      sum += l2.val;
-      l2 = l2.next;
+  while (list1 !== null || list2 !== null || sum !== 0) {
+    if (list1 !== null) {
+      sum += list1.val;
+      list1 = list1.next;
     }
 
-    if (sum >= 10) {
+    if (list2 !== null) {
+      sum += list2.val;
+      list2 = list2.next;
+    }
+
+    if (sum > 9) {
       carry = 1;
       sum -= 10;
     }
 
-    head.next = new ListNode(sum);  // changing the next node in List to sum
-    head = head.next; 
-
+    head.next = new ListNode(sum);
+    head = head.next;
     sum = carry;
-    carry = 0; 
+    carry = 0;
   }
+
+  return list.next;
 }
