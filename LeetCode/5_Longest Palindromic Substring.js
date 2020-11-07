@@ -15,8 +15,8 @@ const longestPalindrome = s => {
       let subSub = currSubString.substring(0, j);
       if (subSub.length <= 1) continue;
 
-      if (isPalindrome(subSub) && subSub.length > max_length) {
-        max_length = subSub.length;
+      if (isPalindrome(subSub) && subSub.length > maxLength) {
+        maxLength = subSub.length;
         maxString = subSub;
       }
     }
@@ -24,5 +24,5 @@ const longestPalindrome = s => {
   return maxLength;
 }
 
-let string = aabab;
+let string = 'aabab';
 console.log(longestPalindrome(string));
