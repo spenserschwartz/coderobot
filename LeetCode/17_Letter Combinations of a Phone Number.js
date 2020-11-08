@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
 const letterCombinations = digits => {
+  if (digits === null || digits.length === 0) return [];
   const map = {
     2 : 'abc',
     3: 'def',
