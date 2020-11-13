@@ -8,10 +8,9 @@ const countAndSay = n => {
     map[i] = countAndSayHelper(map[i - 1])
   }
 
-  return map[i];
+  return map[n];
 
 }
-
 
 const countAndSayHelper = n => {
   const string = n.toString();
