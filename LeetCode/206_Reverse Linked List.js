@@ -13,14 +13,15 @@ Output: 5->4->3->2->1->NULL */
 // !Iterative
 const reverseList = head => {
   let prev = null;
+
   while (head) {
     const next = head.next;
-    const curr = head;
-    curr.next = prev;
-    prev = curr;
-  } 
+    head.next = prev;
+    prev = head;
+    head = next;
+  }
 
-  return prev
+  return prev;
 }
 
 // !Recursive
