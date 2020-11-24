@@ -1,39 +1,31 @@
+// https://leetcode.com/problems/valid-sudoku/
+
+
 const isValidSudoku = board => {
-  // Sudoku is 9x9, so row and column lengths are fixed
-  
   // Check each row
-  for (let row of board) {
-    const arr = row.filter(el => el !== ".");
-    if (hasDupes(arr)) return false;
+  for (let i = 0; i < 9; i++) {
+    let row = board[i];
+    const memo = {};
+    for (let el of row) {
+      if (el === '.') continue;
+      if (memo[el]) return false;
+      else memo[el] = true;
+    }
+
+    // Check each column
+    const colMemo = {};
+    for (let j = 0; j < 9; j++) {
+      if (board[j][i] === '.') continue;
+      if (colMemo[board[j][i]]) return false;
+      else colMemo[board[j][i]] = true;
+      console.log(colMemo)
+    }
   }
 
-  // Check each column
-  for (let i = 0; i < 9; i += 1) {
-    const arr = getColumn(board, i).filter(el => el !== '.');
-    if (hasDupes(arr)) return false;
-  }
 
   // Check each square
-  // !Still in progress
-}
 
-const hasDupes = array => {
-  let memo = {};
-  for (let el of array) {
-    if (memo[el]) return true;
-    else memo[el] = 1;
-  }
-  return false;
-}
 
-const getColumn = (arr,column) => arr.map(el => el[column]);
-
-const getSquare = board => {
-  const arr = [];
-  
-  for (let i = 0; i < 3; i += 1) {
-    for (let j = 0; j < )
-  }
 }
 
 let input = [["5","3",".",".","7",".",".",".","."]
@@ -47,5 +39,3 @@ let input = [["5","3",".",".","7",".",".",".","."]
             ,[".",".",".",".","8",".",".","7","9"]] // true
 
 console.log(isValidSudoku(input));
-
-console.log(getSquare(input))
