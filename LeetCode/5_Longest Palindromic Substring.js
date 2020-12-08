@@ -25,39 +25,26 @@
 //   return maxLength;
 // }
 
-// ! Optimize
-const isPalindrome = string => {
-  return string = string.split('').reverse().join('');
-}
-
+// Optimize
 const longestPalindrome = s => {
-  // Construct a 2D array
-  const dp = [...new Array(s.length + 1)].map(_ => new Array(s.length + 1).fill(false));
+  if (s.length == 0) return '';
+  let [startIndex, offset] = [0, 1];
 
-  let longestString = '';
+  for (let i = 0; i < s.length-1; i++) {
+      let [p1, p2] = [i, i];
 
-  // Base case for one character
-  for (let i = 0; i < s.length; i++) {
-    dp[i][i] = true;
-    lps = s[i];
+      // expand to cover contiguous repeated chars...
+      while (p1 >= 0 && p2 < s.length-1 && s[p1] === s[p2+1]) p2 ++;
+
+      // expand around a center window (p1 -> p2)
+      while (p1 >= 0 && p2 < s.length && s[p1] === s[p2]) {
+          if (p2 + 1 - p1 > offset) [startIndex, offset] = [p1, p2 + 1 - p1];
+          p1 -= 1; p2 += 1;
+      }
   }
+  return s.substring(startIndex, startIndex + offset);
+};
 
-  // Base case for two characters
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === s[i + 1]) dp[i][i + 1] = true;
-    if (dp[i][i + 1]) longestString = s.substring(i, i + 2);
-  }
-
-  // Expand to 3 or more characters
-  for (let i = s.length - 1; i >= 0; i--) {
-    for (let j = i + 2; j < s.length; j++) {
-      dp[i][j] = dp[i + 1][j - 1] && s[i] === s[j];
-      if (dp[i][j]) longestString = longestString.length < (j - i + 1) ? s.substring(i, j + 1) : longestString;
-    }
-  }
-  
-  return longestString;
-}
 
 
 let string = 'aabab';
