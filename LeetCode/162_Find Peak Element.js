@@ -13,7 +13,7 @@
 // }
 
 
-// !Oddly optimized
+// ! Oddly optimized
 const findPeakElement = nums => {
   return nums.indexOf(Math.max(...nums));
 }
