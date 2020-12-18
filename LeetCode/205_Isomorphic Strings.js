@@ -1,15 +1,20 @@
 // https://leetcode.com/problems/isomorphic-strings/
 
 const isIsomorphic = (s, t) => {
-  const memo = {};
+  if (s.length !== t.length) return false;
+  if (s === t) return true;
+
+  const memoS = {};
+  const memoT = {};
 
   for (let i = 0; i < s.length; i++) {
     const letter = s[i];
+    const letterT = t[i];
 
-    if (!memo[letter]) memo[letter] = t[i];
-    else {
-      if (memo[letter] !== t[i]) return false;
-    }
+    if (!memoT[letterT]) memoT[letterT] = letter;
+    if (!memoS[letter]) memoS[letter] = letterT;
+
+    if (memoS[letter] !== letterT || memoT[letterT] !== letter) return false;
   }
   return true;
 }
