@@ -1,3 +1,9 @@
-const badWords = require('./badWords');
+const string = 'hello';
+const ff = Number(string);
+const gg = Number('33');
 
-console.log(JSON.parse(badWords));
+
+console.log(Number(string))
+
+console.log(isNaN(ff))
+console.log(isNaN(gg))
