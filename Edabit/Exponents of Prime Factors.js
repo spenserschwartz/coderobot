@@ -11,4 +11,4 @@ const productEqualTarget = (arr, target) => {
   })
 }
 
-console.log(productEqualTarget([2, 3, 5], 600))
+console.log(productEqualTarget([2, 3, 5], 720))
