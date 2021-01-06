@@ -1,6 +1,6 @@
 // https://edabit.com/challenge/GGDMJ33wg8y3EHQfP
 
-// ! One line, using flat method
+// ! One line, using flat
 // const valueInTree = (tree, val) => {
 //   return tree.flat(Infinity).includes(val);
 // }
