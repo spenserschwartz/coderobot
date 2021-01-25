@@ -21,16 +21,17 @@
 // }
 
 const lengthOfLongestSubstring = s => {
-  let longestString = '';
+  let longString = '';
   let maxLength = 0;
 
-  // Iterate over string. If the letter is already in the longestString, mutate longestString to start after the repeat letter
-  for (let letter of s) {
-    if (longestString.includes(letter)) longestString = longestString.substr(longestString.indexOf(letter) + 1);
+  for (let i = 0; i < s.length; i++) {
+    if (longString.includes(s[i])) longString = longString.substr(longString.indexOf(s[i]) + 1);
 
-    // Add the iterated letter to the longestString and update the maxLength
-    longestString += letter;
-    maxlength = Math.max(maxLength, longestString.length);
+    longString += s[i];
+    maxLength = Math.max(maxLength, longString.length);
   }
+
   return maxLength;
 }
+
+console.log(lengthOfLongestSubstring('abcabcbb'));
