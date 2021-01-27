@@ -1,40 +1,51 @@
+// Create something that can store data
+
+// key and value
+
+// class MovingAverage {
+//   constructor(size) {
+//     this.SIZE = size
+//     this.sum = 0;
+//     this.array = [];
+//     this.windowStart = 0;
+//     this.windowEnd = 0;
+//   }
 
 
-
-const sortByText = objectsArray => {
-  const textContentArray = [];
-  let numObjects = 0;
-  let sumText = 0;
-
-  for (let object of objectsArray) {
-    const textContent = object.textContent
-    textContentArray.push(textContent);
-    sumText += textContent.length;
-    numObjects ++;
+class Object {
+  constructor(length) {
+    this.data = {}
+    this.length = length
+    this.arr = []
   }
 
-  let meanLength = sumText / numObjects;
-  console.log(meanLength);
+  push(key, value) {
+    if (this.length > 0) {
+      if (!this.data[key]) {
+      this.data[key] = value;
+      this.length --;
+      this.arr.push(key);
+      }
+    } else {
+      if (!this.data[key]) {
+      delete this.data[this.arr.shift()]
+      this.data[key] = value;
+      this.arr.push(key);
+      }
+    }
+  }
+};
 
-  textContentArray.sort((a,b) => Math.abs(a.length - meanLength) - Math.abs(b.length - meanLength))
-  return textContentArray;
-}
+
+const obj = new Object(2);
 
 
-//console.log(productDetails([{textContent: 'abcd'}, {textContent: 'abb'}, {textContent: 'abcd'},{textContent: 'ab'}]))
+
+obj.push('hello', 'hi')
+obj.push('bye', 'bi')
+obj.push('coffee', 'cup')
+obj.push('anthony', 'lin')
+obj.push('anthony', 'taing')
 
 
-const sortByReview = (objectsArray, option) => {
-  if (option === 'descending') {
-    return objectsArray.sort((a,b) => b.starRating - a.starRating);
-  } else if (option === 'ascending') return objectsArray.sort((a,b) => a.starRating - b.starRating);
-}
-
-const details = [
-  { textContent: "123456789", starRating: 1 },
-  { textContent: "123", starRating: 5 },
-  { textContent: "12345", starRating: 3 },
-  { textContent: "123456789", starRating: 2 },
-];
-
-console.log(sortByReview(details, 'ascending'))
+console.log(obj);
