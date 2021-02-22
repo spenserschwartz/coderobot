@@ -1,46 +1,71 @@
-// Given list of zip codes
-// Function returns array of objects with full zip code and zone
-
-const zippy = object => {
-  const result = [];
-
-  // Iterate through zone and zips
-  for (let i = 0; i < object.zone.length; i++) {
-    const newObject = {"zone" : object.zone[i],
-                        "zips" :[]};
-    
-    let zip = object.zips[i]; // 350-358
-    let zipArr = zip.split('-'); // ['350', '358']
-    for (let j = 0; j < (zipArr[1] - zipArr[0]); j++) {
-      let num = Number(zipArr[0]) + j;
-      num = num * 100;
-      for (let k = 0; k < 100; k++) {
-        let numK = num + k;
-        // Push num to zips array in newObject
-        newObject['zips'].push(numK);
-      } 
-    }
-    result.push(newObject);
+const result = {
+  [
+      {
+        id: 1,
+        category: "Sporting Goods",
+        price: "$19.99",
+        inStock: true,
+        name: "Hockey Puck",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=Hockey+Puck"
+      },
+      {
+        id: 2,
+        category: "Sporting Goods",
+        price: "$9.99",
+        inStock: true,
+        name: "Baseball",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=Baseball"
+      },
+      {
+        id: 3,
+        category: "Sporting Goods",
+        price: "$29.99",
+        inStock: false,
+        name: "Basketball",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=Basketball"
+      },
+      {
+        id: 4,
+        category: "Electronics",
+        price: "$199.99",
+        inStock: true,
+        name: "iPod Touch",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=iPod+Touch"
+      },
+      {
+        id: 5,
+        category: "Electronics",
+        price: "$399.99",
+        inStock: false,
+        name: "iPhone 6",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=iPhone+5"
+      },
+      {
+        id: 6,
+        category: "Electronics",
+        price: "$799.99",
+        inStock: true,
+        name: "Galaxy S20",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=Nexus+7"
+      },
+      {
+        id: 7,
+        category: "Electronics",
+        price: "$5999.99",
+        inStock: true,
+        name: "Mac Pro",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=Mac+Pro"
+      },
+      {
+        id: 8,
+        category: "Clothing",
+        price: "$99.99",
+        inStock: true,
+        name: "Lattice Jacket",
+        imageUrl: "https://via.placeholder.com/400x400.png?text=Lattice+Jacket"
+      }
+    ]
   }
-  return result;
-}
-
-/* Jason Recs
-
-  Array of zip codes 
-  Append to zip code
-  
-
-*/
 
 
-
-// 35000 35001 35898 35899
-// {zone: 007,
-//  zips: 35000 35001 35898 35899}
-
-const excel = {zips: ["350-358", "359-364", "365-367"],
-               zone: ['007', '008', '009']}
-
-
-console.log(zippy(excel));
+console.log(result)
